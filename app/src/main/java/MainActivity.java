@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
                 break;
             }
         }
-        
+
         Log.d(TAG, coins.toString());
     }
 
