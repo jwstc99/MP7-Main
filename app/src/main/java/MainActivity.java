@@ -119,7 +119,9 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
                 break;
             }
         }
-        
+        TextView coinName = findViewById(R.id.coinName);
+        coinName.setVisibility(View.VISIBLE);
+        coinName.setText(selectedCoin);
         Log.d(TAG, coins.toString());
     }
 
