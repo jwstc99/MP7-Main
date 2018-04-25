@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
      */
     private static final String TARGET_URL = "https://api.coinmarketcap.com/v1/ticker/";
     /**
+     * Request Queue for API calls.
+     */
+    private RequestQueue requestQueue;
+    /**
      * Returned data from API.
      */
     private JsonArray data = null;
@@ -42,6 +47,10 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
      * Array of all available coins.
      */
     private ArrayList<String> coins = new ArrayList<>();
+    /**
+     *Coin currently selected on the spinner
+     */
+    private String selectedCoin;
 
     /**
      * On create method.
@@ -49,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
      */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue = Volley.newRequestQueue(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         startAPICall(requestQueue);
@@ -67,9 +76,9 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
 
     /**
      * Starts the API Call to get information.
-     * @param requestQueue request queue for project
+     * @param requestQueue1 request queue for project
      */
-    private void startAPICall(final RequestQueue requestQueue) {
+    private void startAPICall(final RequestQueue requestQueue1) {
         StringRequest arrayRequest = new StringRequest(
                 Request.Method.GET,
                 TARGET_URL,
@@ -87,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
                 Log.w(TAG, error.toString());
             }
         });
-        requestQueue.add(arrayRequest);
+        requestQueue1.add(arrayRequest);
     }
 
     /**
@@ -102,12 +111,29 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         for (JsonElement j : jsonArray) {
             coins.add(j.getAsJsonObject().get("name").getAsString());
         }
+        //NEEDED: Fill TextView boxes here.
+        JsonObject coinObject;
+        for (JsonElement j : jsonArray) {
+            if (j.getAsJsonObject().get("name").getAsString().equals(selectedCoin)) {
+                coinObject = j.getAsJsonObject();
+                break;
+            }
+        }
+        
         Log.d(TAG, coins.toString());
     }
 
+    /**
+     * Sets the coin selected in the spinner to local variable.
+     * @param parent idk
+     * @param view idk
+     * @param i pos of item
+     * @param l idk
+     */
     @Override
-    public void onItemSelected(final AdapterView<?> adapterView, final View view, final int i, final long l) {
-
+    public void onItemSelected(final AdapterView<?> parent, final View view, final int i, final long l) {
+        selectedCoin = (String) parent.getItemAtPosition(i);
+        startAPICall(requestQueue);
     }
 
     @Override
