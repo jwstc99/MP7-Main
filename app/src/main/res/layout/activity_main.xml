@@ -22,6 +22,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp"
+        android:fontFamily="serif-monospace"
         android:text="TextView"
         android:textAlignment="center"
         android:textColor="@color/green"
@@ -34,7 +35,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/coinName"
         android:layout_marginTop="89dp"
-        android:text="Price:"
+        android:text="Price (USD):"
         android:textColor="@color/black"
         android:textSize="36sp" />
 
@@ -42,23 +43,11 @@
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/priceLabel"
-        android:layout_marginStart="124dp"
+        android:layout_toEndOf="@+id/priceLabel"
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="36sp" />
-
-    <TextView
-        android:id="@+id/priceBTCLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/coinName"
-        android:layout_marginTop="147dp"
-        android:text="Price (BTC):"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/change24hLabel"
@@ -66,30 +55,156 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/coinName"
-        android:layout_marginTop="179dp"
+        android:layout_marginTop="172dp"
+        android:fontFamily="casual"
         android:text="Change (24h):"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/change24h"
+        android:id="@+id/text4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/beSet2"
+        android:layout_toEndOf="@+id/priceLabel"
+        android:fontFamily="casual"
+        android:text="TextView"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/priceLabel"
+        android:layout_alignTop="@+id/beSet1"
+        android:fontFamily="casual"
+        android:text="TextView"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignTop="@+id/change24hLabel"
-        android:layout_marginStart="141dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="casual"
         android:text="TextView"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/priceBTC"
+        android:id="@+id/beSet2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/price"
-        android:layout_alignTop="@+id/priceBTCLabel"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/coinName"
+        android:layout_marginBottom="217dp"
+        android:fontFamily="casual"
+        android:text="Market Cap (USD):"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/beSet4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/coinName"
+        android:layout_marginBottom="117dp"
+        android:fontFamily="casual"
+        android:text="Change (7d):"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/beSet5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/coinName"
+        android:layout_marginBottom="70dp"
+        android:fontFamily="casual"
+        android:text="Total Supply:"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/beSet3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/coinName"
+        android:layout_marginBottom="166dp"
+        android:fontFamily="casual"
+        android:text="Chage (1h):"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/beSet1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/coinName"
+        android:layout_marginTop="215dp"
+        android:fontFamily="casual"
+        android:text="Price (BTC):"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/beSet5"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="casual"
         android:text="TextView"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/beSet4"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="casual"
+        android:text="TextView"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/beSet3"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="casual"
+        android:text="TextView"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
