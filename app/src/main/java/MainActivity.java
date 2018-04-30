@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, coins);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, coins);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // attaching data adapter to spinner
@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
      * @param requestQueue1 request queue for project
      */
     private void startAPICall(final RequestQueue requestQueue1) {
+        Log.d(TAG, "Started API Call");
         StringRequest arrayRequest = new StringRequest(
                 Request.Method.GET,
                 TARGET_URL,
@@ -115,14 +116,15 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         JsonObject coinObject;
         for (JsonElement j : jsonArray) {
             if (j.getAsJsonObject().get("name").getAsString().equals(selectedCoin)) {
+                Log.d(TAG, "Found coin in list");
                 coinObject = j.getAsJsonObject();
                 break;
             }
         }
         TextView coinName = findViewById(R.id.coinName);
+        coinName.setText("Help, i need help.");
         coinName.setVisibility(View.VISIBLE);
-        coinName.setText(selectedCoin);
-        Log.d(TAG, coins.toString());
+        Log.d(TAG, "Set label");
     }
 
     /**
@@ -134,7 +136,8 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
      */
     @Override
     public void onItemSelected(final AdapterView<?> parent, final View view, final int i, final long l) {
-        selectedCoin = (String) parent.getItemAtPosition(i);
+        selectedCoin = coins.get(i);
+        Log.d(TAG, "Selected coin: " + selectedCoin);
         startAPICall(requestQueue);
     }
 
